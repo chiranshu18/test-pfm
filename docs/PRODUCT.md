@@ -1,6 +1,8 @@
 # Pocket FM Audio Player — Product Requirements
 
-**Status:** Requirements captured. Waiting for Chiranshu to freeze this doc. Architecture and implementation must not start until this file is frozen.
+**Status:** Frozen (2026-11-04). Do not change locked behavior without an explicit new decision and a Decision log update.
+
+**Architecture:** [ARCHITECTURE.md](ARCHITECTURE.md)
 
 **Audience:** Any human or agent picking up this work. Do not invent behavior, visuals, or fields that are not written here.
 
@@ -171,6 +173,7 @@ stateDiagram-v2
 | Next on the last track | **Disabled.** Does nothing. |
 | Track reaches the end | **Stop.** Do not play the next track. Stay on that track, paused, **playhead reset to 0:00**. Pressing Play starts it from the beginning. |
 | Now Playing tag | Shown in the header (and the current row stays highlighted with the triangle) **whenever that track is current**, including while paused. |
+| Buffering | While a track is requested but audio is not yet playing (load/wait), the main button and current-row indicator show a **spinner**, not the pause icon. Pause appears only after playback has actually started. |
 
 Disabled previous/next visual at the ends is **not in the screenshot**. Buttons must not work at the ends; exact disabled styling is **open**.
 
@@ -251,6 +254,7 @@ All dates are 2026-11-04.
 | D20 | Current row uses screenshot treatment (purple highlight + left play triangle), not a second “Now Playing” text tag on the row. | Screenshot overrides the earlier row-tag visual. Header still has the tag. |
 | D21 | Playlist section shows `Playlist ({count})` with a non-interactive list icon. | Present in screenshot; no interaction specified. |
 | D22 | Time format in the UI is `m:ss` as in the screenshot. | Visible in screenshot. |
+| D23 | Buffering/loading shows a spinner instead of the pause icon until audio is actually playing. | Bug report from Chiranshu, 2026-11-04. |
 
 ---
 
@@ -258,11 +262,11 @@ All dates are 2026-11-04.
 
 - Path: Create React App named `pocketfm`
 - React 19, JavaScript
-- Default CRA boilerplate only. No player code yet.
+- Architecture: [ARCHITECTURE.md](ARCHITECTURE.md)
 
 ---
 
 ## Next
 
-1. Chiranshu confirms this doc is frozen (or answers Open questions).
-2. **Then** architecture. Not before.
+1. Phases 1–6 in [ARCHITECTURE.md](ARCHITECTURE.md) are implemented.
+2. Open questions above stay open until explicitly decided. Volume currently starts at the HTMLAudioElement default (`1.0`). Load-error copy is a placeholder in the header slot.

@@ -1,0 +1,46 @@
+.volume {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 140px;
+  flex: 1;
+  max-width: 180px;
+}
+
+.speaker {
+  display: inline-flex;
+  color: var(--text-muted);
+}
+
+.speaker svg {
+  width: 20px;
+  height: 20px;
+}
+
+.track {
+  position: relative;
+  flex: 1;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--track-dim);
+  cursor: pointer;
+  touch-action: none;
+}
+
+.fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+.thumb {
+  position: absolute;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}

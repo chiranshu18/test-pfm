@@ -1,0 +1,47 @@
+.transport {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.skip,
+.play {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.skip {
+  width: 36px;
+  height: 36px;
+  color: #d7d0ee;
+}
+
+.skip svg {
+  width: 22px;
+  height: 22px;
+}
+
+.skip:disabled {
+  cursor: default;
+  opacity: 0.35;
+}
+
+.play {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--accent-strong);
+  color: #fff;
+  box-shadow: 0 8px 20px rgb(123 92 255 / 35%);
+}
+
+.play svg {
+  width: 26px;
+  height: 26px;
+}
